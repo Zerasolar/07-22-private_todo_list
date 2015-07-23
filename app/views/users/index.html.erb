@@ -2,7 +2,7 @@
   <h2>Users</h2>
   <div>
     <% if session[:user_id] %>
-    <form action="/users">
+    <form action= "<%= users_path %>">
       <input type="hidden" name="log_out" value="true">
       <input type="submit" value="Log Out">
     </form>

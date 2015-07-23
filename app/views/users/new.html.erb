@@ -5,7 +5,7 @@
 </div>
 
 <div>
-  <%= form_tag("/users", method: "post") do %>
+  <%= form_tag( users_path, method: "post") do %>
   <h3>Email:</h3>
   <input type="text" name="users[email]" placeholder="Email">
   <h3>Password:</h3>
