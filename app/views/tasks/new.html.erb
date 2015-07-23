@@ -1,0 +1,13 @@
+<div>
+  <% @new_task.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_tag( "/", method: "post") do %>
+    <h3>Task Name</h3>
+    <input type="text" name="tasks[name]" placeholder="">
+    <input type="submit">
+    <% end %>
+</div>

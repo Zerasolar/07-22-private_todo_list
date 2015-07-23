@@ -1,0 +1,29 @@
+<div>
+  <h2>Users</h2>
+  <div>
+    <% if session[:user_id] %>
+    <form action="/users">
+      <input type="hidden" name="log_out" value="true">
+      <input type="submit" value="Log Out">
+    </form>
+    <a href="<%= edit_user_path(session[:user_id])%>">Edit Profile</a>
+    <a href="<%= user_path(session[:user_id]) %>" data-method="delete">Delete Profile</a><br>
+      
+    <a href="<%= user_path(session[:user_id])%>">Tasks</a>
+      
+    <% else %>
+    <a href="/login">Login</a>
+    <% end %>
+
+  </div>
+
+
+</ul>
+</div>
+
+<!--# <ul>
+<% User.all.each do |user| %>
+<li>
+<a href="/users/<%= user.id %>"><%= user.email %></a>
+</li> #-->
+<!--# <% end %> #-->

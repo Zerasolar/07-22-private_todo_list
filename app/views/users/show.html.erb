@@ -1,0 +1,8 @@
+<h2>Tasks</h2>
+
+<% Task.all.each do |list| %>
+
+<p><%= list.name %></p>
+    <a href="<%= user_tasks_path(session[:user_id]) %>" data-method="delete">Done</a><br>
+<%end%>
+<a href="<%= new_task_path(@user.id) %>">Add New Task</a>
