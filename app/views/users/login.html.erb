@@ -1,13 +1,13 @@
 <div>
-    <h2>Login</h2>
+  <h2>Login</h2>
 
-    <%= form_tag("/authenticate_login", method: "post") do %>
-      <h4>Email</h4>
-      <input type="text" name="users[email]" placeholder="Email">
-      <h4>Password</h4>
-      <input type="password" name="users[password]" placeholder="Password">
-      <input type="submit">
-      <% end %>
-    <br>
-    <button><a href="/users/new">Create an account</a></button>
+  <%= form_tag("/authenticate_login", method: "post") do %>
+  <h4>Email</h4>
+  <input type="text" name="users[email]" placeholder="Email">
+  <h4>Password</h4>
+  <input type="password" name="users[password]" placeholder="Password">
+  <input type="submit">
+  <% end %>
+  <br>
+  <button><a href="/users/new">Create an account</a></button>
 </div>

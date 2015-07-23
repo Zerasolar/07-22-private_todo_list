@@ -8,12 +8,12 @@ class TasksController < ApplicationController
     else
       @current_user = false
     end
-    render "tasks/index"
+    render :show
   end
   
   def show
     @task = Task.find(params(:id))
-    render "users/show"
+    render :show
   end
   
   def new
@@ -22,18 +22,20 @@ class TasksController < ApplicationController
   end
   
   def create
-    name = params["tasks"]["name"]
-    user_id = params["tasks"]["user_id"]
-    @new_task = Task.create({"name" => name, "user_id" => user_id})
+    @new_task = Task.create(task_params)
     redirect_to "/users/show"
   end
   
   def destroy
     task_id = Task.find(params[:id])
     task_id.destroy
-    redirect_to "/users/show"
+    redirect_to user_path
   end
   
   private
+  
+  def task_params
+    params[:tasks].permit(:name, :user_id)
+  end
   
 end

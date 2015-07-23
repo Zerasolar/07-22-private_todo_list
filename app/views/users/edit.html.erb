@@ -1,18 +1,18 @@
 <div>
   <% @user.errors.full_messages.each do |message| %>
-    <%= message %>
+  <%= message %>
   <% end %>
 </div>
 
 <div>
   <%= form_tag user_path(session[:user_id]), method: "post" do %>
-    <h3>Email:</h3>
-    <input type="text" name="users[email]" value="<%= @user.email %>">
-    <h3>Password:</h3>
-    <input type="password" name="users[password]" placeholder="Password">
-    <input type="hidden" name="_method" value="put">
-    <input type="submit">
-    <% end %>
+  <h3>Email:</h3>
+  <input type="text" name="users[email]" value="<%= @user.email %>">
+  <h3>Password:</h3>
+  <input type="password" name="users[password]" placeholder="Password">
+  <input type="hidden" name="_method" value="put">
+  <input type="submit">
+  <% end %>
 </div><br>
 
 <div>
