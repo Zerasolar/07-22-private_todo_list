@@ -23,13 +23,13 @@ class TasksController < ApplicationController
   
   def create
     @new_task = Task.create(task_params)
-    redirect_to "/users/show"
+    redirect_to to_do_path
   end
   
   def destroy
     task_id = Task.find(params[:id])
     task_id.destroy
-    redirect_to user_path
+    redirect_to to_do_path
   end
   
   private

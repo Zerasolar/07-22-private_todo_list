@@ -19,14 +19,14 @@ class UsersController < ApplicationController
       actual_pw = BCrypt::Password.new(@user_email.password)
       if actual_pw == given_pw
         session[:user_id] = @user_email.id
-        render :index
+        redirect_to dashboard_path
       else
         @valid = false
-        render "users/login"
+        render "login"
       end
     else
       @valid = false
-      render "users/login"
+      render "login"
     end
   end
   
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     email = params["users"]["email"]
     password = BCrypt::Password.create(params["users"]["password"])
     @new_user = User.create({"email" => email, "password" => password})
-    redirect_to users_path
+    redirect_to dashboard_path
   end
   
   def destroy
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     encrypted_password = BCrypt::Password.create(params["users"]["password"])
     @user.password = encrypted_password
     @user.save
-    redirect_to users_path
+    redirect_to dashboard_path
   end
   
 end

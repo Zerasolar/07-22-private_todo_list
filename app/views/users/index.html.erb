@@ -6,10 +6,10 @@
       <input type="hidden" name="log_out" value="true">
       <input type="submit" value="Log Out">
     </form>
-    <a href="<%= edit_user_path(session[:user_id])%>">Edit Profile</a>
+    <a href="<%= edit_profile_path%>">Edit Profile</a>
     <a href="<%= user_path(session[:user_id]) %>" data-method="delete">Delete Profile</a><br>
       
-    <a href="<%= user_path(session[:user_id])%>">Tasks</a>
+    <a href="<%= to_do_path%>">Tasks</a>
       
     <% else %>
     <a href="/login">Login</a>

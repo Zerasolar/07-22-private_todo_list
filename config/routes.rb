@@ -6,7 +6,17 @@ Rails.application.routes.draw do
   
   get "/login" => 'users#login'
   
-  post "/authenticate_login" => 'users#authenticate_login'
+  post "/authenticate_login" => "users#authenticate_login"
+  
+  # get "/task_list" => 'users#show', :as => 'tasks_list'
+  
+  get "/edit_profile" => "users#edit", :as => 'edit_profile'
+  
+  get "/dashboard" => "users#index", :as => "dashboard"
+  
+  get "/to_do" => "users#show", :as => "to_do"
+  
+  
   
   resources :tasks
   
