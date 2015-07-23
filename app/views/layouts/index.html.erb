@@ -11,10 +11,7 @@
           <input type="submit" value="Edit">
           <input type="hidden" name="tasks[id]" value="<%= task.id%>">
         </form>
-        <%= form_tag("/delete_task", method: "post") do %>
-          <input type="submit" value="Delete">
-          <input type="hidden" name="tasks[id]" value="<%= task.id %>">
-          <input type="hidden" name="_method" value="delete">
+<a href="<%= user_task_path(session[:user_id]) %>" data-method="delete">Done</a>
         <%end%>
       </div>
     </li>

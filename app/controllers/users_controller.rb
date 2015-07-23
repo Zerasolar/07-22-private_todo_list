@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   
     def show
       @user = User.find(session[:user_id])
+      @tasks = Task.where(user_id: @user.id)
       render "users/show"
     end
   

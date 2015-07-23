@@ -12,42 +12,28 @@ class TasksController < ApplicationController
   end
   
   def show
+    @task = Task.find(params(:id))
+    render "users/show"
   end
   
   def new
+    @user = User.find(session[:user_id])
     @new_task = Task.new
   end
   
   def create
     name = params["tasks"]["name"]
-    @new_task = Task.create({"name" => name})
-    redirect_to "user_path(session[:user_id])"
+    user_id = params["tasks"]["user_id"]
+    @new_task = Task.create({"name" => name, "user_id" => user_id})
+    redirect_to "/users/show"
   end
   
   def destroy
-    task = Task.find(session[:user_id])
-    task.delete
-    session[:user_id] = nil
-    redirect_to "/users"
-  end
-  
-  def edit
-  end
-  
-  def update
+    task_id = Task.find(params[:id])
+    task_id.destroy
+    redirect_to "/users/show"
   end
   
   private
   
-  def task_params
-    params["tasks"].permit(:name)
-  end
-  
-  def get_user
-    @user = User.find(session[:user_id])
-  end
-  
-  def get_task
-    @task = Task.find(params[:id])
-  end
 end
