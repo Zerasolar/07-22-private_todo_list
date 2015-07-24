@@ -1,7 +1,8 @@
+<% if session[:user_id] %>
 <div>
-  <h2>Users</h2>
+  <%@user = User.find(session[:user_id])%>
+  <h2>Welcome <%= @user.email%></h2>
   <div>
-    <% if session[:user_id] %>
     <form action= "<%= users_path %>">
       <input type="hidden" name="log_out" value="true">
       <input type="submit" value="Log Out">

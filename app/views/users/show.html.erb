@@ -1,10 +1,18 @@
-<h2>Tasks</h2>
+<h2><%= @user.email%>'s Tasks</h2>
+
+<div>
+  <%= form_tag(tasks_path(@user.id), method: "post") do %>
+  <h3>Task Name</h3>
+  <input type="text" name="tasks[name]" placeholder="">
+  <input type="hidden" name="tasks[user_id]" value="<%= @user.id %>">
+  <input type="submit">
+  <% end %>
+</div><br>
 
 <% @tasks.each do |task| %>
 
 <ul>
-  <li><%= task.name %> <a href="<%= task_path(:id => task.id) %>" data-method="delete">Done</a></li><br>
+  <li><%= task.name %> <a href="<%= task_path(:id => task.id) %>" data-method="delete">Done</a></li>
 </ul>
 <%end%>
-<a href="<%= new_task_path %>">Add New Task</a>
 <a href="<%= users_path%>">Profile</a>
